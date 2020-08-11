@@ -1,8 +1,4 @@
 /*
-    Name: Syed Quadri
-    Gradebook number: 55
-    Date: 4/28
-
     This program opens an input file called "eightBallResponses.txt" which contains the responses to the
     questions that the user will ask. It will then call a function called getResponses and place
     the responses into an array. The program will then ask the user to enter a question and use rand to call a
