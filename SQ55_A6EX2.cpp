@@ -1,0 +1,96 @@
+/*
+    Name: Syed Quadri
+    Gradebook number: 55
+    Date: 4/28
+
+    This program opens an input file called "eightBallResponses.txt" which contains the responses to the
+    questions that the user will ask. It will then call a function called getResponses and place
+    the responses into an array. The program will then ask the user to enter a question and use rand to call a
+    random index of the array and print the response in that respective index.
+*/
+
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+// function prototypes
+
+void getResponses(ifstream &file, string answers[]);
+
+const int ARRAY_SIZE = 15;
+
+// main function
+
+int main()
+{
+
+    // define variables
+
+    string response[ARRAY_SIZE], question;
+    char reAsk;
+    int num;
+
+    // define input file
+
+    ifstream inputFile;
+    inputFile.open("eightBallResponses.txt");
+
+    // call function
+
+    getResponses(inputFile, response);
+
+    // loop to prompt user to ask question
+
+    do
+    {
+        cout << "Enter your question for the Magical Mystical Eight Ball." << endl;
+        cin.ignore();
+        getline(cin, question);
+
+        // rand function
+
+        unsigned seed = time(0);
+        srand(seed);
+
+        // number of indexes
+
+        num = rand() % 16;
+
+        cout << response[num] << endl;
+
+        // loop to ask user to ask another question or exit
+
+        do
+        {
+            cout << "Would you like to ask another question?" << endl;
+            cin >> reAsk;
+
+            if (reAsk != 'y' && reAsk != 'Y' && reAsk != 'n' && reAsk != 'N')
+            {
+                cout << "Error, " << reAsk << " is not a valid response." << endl;
+            }
+
+            if (reAsk == 'n' || reAsk == 'N')
+            {
+                cout << "Goodbye!" << endl;
+            }
+        }
+        while (reAsk != 'y' && reAsk != 'Y' && reAsk != 'n' && reAsk != 'N');
+
+    }
+    while (reAsk == 'y' || reAsk == 'Y');
+
+    inputFile.close();
+}
+
+// function will read from file and input them into the array via for loop
+
+void getResponses(ifstream &file, string answers[])
+{
+    for (int i = 0; i < ARRAY_SIZE; i++)
+    {
+        getline(file, answers[i]);
+    }
+}
