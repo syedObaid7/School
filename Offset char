@@ -1,7 +1,4 @@
-/*  Name: Syed Quadri
-    Gradebook number: 55
-    Date: 4/27
-
+/*  
     Purpose of program: This program takes in an input asking the user for the name of an output file,
     and the offset by which to encrypt the data. It performs input validation on this data to make sure
     it is between 2 and 95. It then asks the user for a string (or multiple strings) and encrypts it by increasing each
