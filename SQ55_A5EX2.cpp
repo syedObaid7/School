@@ -1,0 +1,113 @@
+/*
+Syed Obaid Quadri gradebook #55
+
+This program will take in a word or phrase and checks whether it is a palindrome.
+The program has 3 functions including main.
+*/
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+// Function prototypes
+
+string getString(string str);
+bool isPalindrome(string str);
+
+/*
+main function
+Prompts user to enter a word or phrase to test whether it is a palindrome.
+Calls two functions and based on values returned by them prints whether the word/phrase
+is a palindrome.
+*/
+
+int main()
+{
+    string pal_test, newStr;
+    bool valid;
+
+    cout << "Enter a word or phrase and I will tell you whether it is a palindrome." << endl;
+    getline(cin, pal_test);
+
+    if (pal_test.length() != 0)
+    {
+        newStr = getString(pal_test);
+
+        valid = isPalindrome(newStr);
+
+        if (valid == true)
+        {
+            cout << "" << pal_test << "" << " is a palindrome" << endl;
+        }
+        else
+        {
+            cout << "" << pal_test << "" << " is not a palindrome" << endl;
+        }
+    }
+    else
+    {
+        cout << "The entered string is empty" << endl;
+    }
+
+}
+
+/*
+This function takes in a string as an argument and returns a string.
+The function will read each character of the string that was passed
+and convert it to lowercase. It will then check the ASCII value of
+each character and remove anything that is not between character a and z.
+It returns the new string.
+*/
+
+string getString(string str)
+{
+    string str1, str2;
+
+    int j = str.length();
+
+    for (int i = 0; i < j; i++)
+    {
+        str1 += tolower(str.at(i));
+    }
+
+    j = str1.length();
+
+    for (int i = 0; i < j; i++)
+    {
+        if (str1.at(i) >= 'a' && str1.at(i) <= 'z')
+        {
+            str2 += str1.at(i);
+        }
+    }
+
+    return str2;
+}
+
+/*
+This function takes a string as an argument and returns a bool.
+It will check the first and last character of a string to see if
+they are the same as it moves towards the middle of the string.
+If they are the same it returns true else false.
+*/
+
+bool isPalindrome(string str)
+{
+    bool valid;
+    int j = str.length() - 1;
+
+    for(int i = 0; i <= j; i++, j--)
+    {
+        if(str.at(i) == str.at(j))
+        {
+            valid = true;
+        }
+        else
+        {
+            valid = false;
+            break;
+        }
+    }
+
+    return valid;
+
+}
