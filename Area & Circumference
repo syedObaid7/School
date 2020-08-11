@@ -1,4 +1,4 @@
-/* Gradebook #55
+/*
 * The program will calculate area and circumference of a circle from coordinates that it will read in.
 */
 #include <iostream>
